@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/690453944.svg)](https://zenodo.org/badge/latestdoi/690453944)
 
-This repository aims at addressing the problem of strong gravitational lens finding in the era of large wide-field surveys such as Euclid. cGANs (or *conditional Generative Adversarial Networks*) have proven successful in image to image translation tasks[1]((https://doi.org/10.48550/arXiv.1611.07004)) but also at anomaly detection[2]((https://arxiv.org/abs/2310.09073)). In this repository, it is shown that a cGAN- when trained on Euclid data of non-lenses- can find lensing systems in Euclid via anomaly detection, giving an alternative method of lens finding.
+This repository aims at addressing the problem of strong gravitational lens finding in the era of large wide-field surveys such as Euclid. cGANs (or *conditional Generative Adversarial Networks*) have proven successful in [image to image translation tasks](https://doi.org/10.48550/arXiv.1611.07004) but also at anomaly detection[2](https://arxiv.org/abs/2310.09073). In this repository, it is shown that a cGAN- when trained on Euclid data of non-lenses- can find lensing systems in Euclid via anomaly detection, giving an alternative method of lens finding.
 
 This repository contains notebooks and additional files for data preparation and the source code for the cGAN. This repository uses data from the Euclid Early Release Observations *(ERO)* of the Perseus Cluster which is now publicly available. What is covered in this repository is given via detailed Python notebooks as follows:
 1. A reprojection of Euclid VIS-band data onto a NISP-band world coordinate system.
