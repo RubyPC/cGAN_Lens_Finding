@@ -35,24 +35,18 @@ This returns the simulated lenses for Euclid-VIS and Euclid NISP filters with a 
 
 To use the cGAN, follow:
 
-> cGANs_JWST.ipynb
+> cGANs_Euclid_ERO.ipynb
 
 The data fed to the cGAN is loaded from each individual waveband file. The cGAN takes as input 3 Euclid filters (VIS, NISP-Y and NISP-J) for each extracted object from the Perseus cluster. The goal is for the cGAN to predict the NISP-H data for each object. 
 
 The entire dataset of cutouts from the Perseus cluster includes 50,000 objects which is split into 40,000 for training, 5,000 for validation and 5,000 for testing. The training set do *not* contain the simulated gravitational lenses such that the network learns the morphologies present in cutouts from the Perseus cluster and rare systems and configurations such as lenses remain unknown to the network. The test set is composed of 10% simulated gravitational lenses (500 lenses) and the goal is for the cGAN to find these lenses by poorly predicting their NISP-H data --> by detecting them as anomalies.
 
 ## Results after Training
-The cGAN predicts the strong gravitational lenses observed by the long wavelength filters of JWST NIRcam to a high accuracy. We also test whether the cGAN can predict long wavelength JWST NIRcam data from Euclid-VIS and Euclid-NISP data. Below shows examples of results produced by the network.
-<img width="460" alt="Output3" src="https://github.com/RubyPC/cGAN_Strong_Lensing/assets/106536925/fd883707-37d4-4a32-b3d0-d1c578a3d9d9">
+The cGAN predicts the NISP-H band for the cutouts from the Perseus cluster containing non-lenses very well, with very minimal residuals between the ground truth NISP-H band data and the predictions by the cGAN. Contrastingly, the predictions on the test set containing the simulated lenses are predicted poorly with greater residuals between the true data and the prediction with the prediction images being unclear and noisy and missing a lot of luminosity of the arcs and rings. Predictions on non-lenses (of which there are 4500 in the test set) during test time are predicted very well. Interestingly, there are few lenses in the test set (~15) which are well predicted. These were inspected and were all multiple image systems that would have been difficult to detect by eye without prominent arcs and rings. 
 
-
-Predicting long wavelength JWST NIRcam data from Euclid-VIS or Euclid-NISP data or a mixture of both would be a beneficial application of the cGAN. The pixel resolutions between the two Euclid instruments and JWST NIRcam are different, so we must expect a different output from JWST short wavelength to long wavelength. It could be the case that predicting strong gravitational lenses as observed by JWST from Euclid observations is a method of anomaly detection- observations made by Euclid that are potential gravitational lenses could be proved as non-lenses as observed by JWST. Although this does not solve the problem of finding strong gravitational lenses, it is useful for improving the purity and recall of our strong lens finding methods.
-
-Further results showing each individual filter prediction and Euclid to JWST predictions are given in the cGAN jupyter notebook.
+For more results, see the notebook above.
 
 ## Some Useful Links
-* [JWST User Documentation](https://jwst-docs.stsci.edu/)
-* [JWST NIRcam Imaging Information](https://jwst-docs.stsci.edu/jwst-near-infrared-camera)
 * [Euclid Red Book](https://arxiv.org/abs/1110.3193)
 * [Euclid VIS and NISP Insruments](https://www.euclid-ec.org/public/mission/vis/)
 
