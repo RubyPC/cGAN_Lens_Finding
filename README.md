@@ -10,7 +10,7 @@ This repository contains notebooks and additional files for data preparation and
 3. A tutorial of how to load the data from the Perseus cluster and detect and extract sources in each filter. Additionally, how to take the individual sources and paint a simulated gravitational lens in.
 4. The source code for the cGAN and a detailed tutorial of how to use it.
 
-Also included in this repository, is files that are essential for using the above notebooks. More detail can be found below.
+Also included in this repository, are files that are essential for using the above notebooks. More detail can be found below.
 
 ## Data Preparation for the cGAN
 The VIS-band image of the Perseus Cluster is much greater than that for the NISP-bands due to its different angular resolution. To extract sources from the data with coordinates that correspond to the same point in all 4 filters, we reproject the VIS-band data onto the same image plane as the NISP-band data. This is made simple using Astropy's [reproject](https://reproject.readthedocs.io/en/stable/) package. Installation information is given on the webpage. To do this reprojection, you will have to follow this short example:
@@ -22,6 +22,7 @@ After reprojection, the filters have the same dimensions and share a local world
 > Lens_Dataset.ipynb
 
 Though, this includes the extraction for one crop only. For the entire training and test data set for the cGAN, this notebook extracted crops of the entire Perseus data. 
+
 In the remainder of the notebook, simulated strong gravitational lenses are painted into a subsection of the extracted sources to form part of the test set for the cGAN. It is in only 10% of the test set that the lenses are present. To simulate the strong gravitational lenses for Euclid-VIS, Euclid-NISP, you can follow:
 
 > Lens_Simulation.ipynb
@@ -37,7 +38,8 @@ To use the cGAN, follow:
 > cGANs_JWST.ipynb
 
 The data fed to the cGAN is loaded from each individual waveband file. The cGAN takes as input 3 Euclid filters (VIS, NISP-Y and NISP-J) for each extracted object from the Perseus cluster. The goal is for the cGAN to predict the NISP-H data for each object. 
-The entire dataset of cutouts from the Perseus cluster includes 50,000 objects which is split into 40,000 for training, 5,000 for validation and 5,000 for testing. The training set do *not* contain the simulated gravitational lenses such that the network learns the morphology present in cutouts from the Perseus cluster and rare systems and configurations such as lenses remains unknown to the network. The test set is composed of 10% simulated gravitational lenses (500 lenses) and the goal is for the cGAN to find these lenses by poorly predicting their NISP-H data --> by detecting them as anomalies.
+
+The entire dataset of cutouts from the Perseus cluster includes 50,000 objects which is split into 40,000 for training, 5,000 for validation and 5,000 for testing. The training set do *not* contain the simulated gravitational lenses such that the network learns the morphologies present in cutouts from the Perseus cluster and rare systems and configurations such as lenses remain unknown to the network. The test set is composed of 10% simulated gravitational lenses (500 lenses) and the goal is for the cGAN to find these lenses by poorly predicting their NISP-H data --> by detecting them as anomalies.
 
 ## Results after Training
 The cGAN predicts the strong gravitational lenses observed by the long wavelength filters of JWST NIRcam to a high accuracy. We also test whether the cGAN can predict long wavelength JWST NIRcam data from Euclid-VIS and Euclid-NISP data. Below shows examples of results produced by the network.
