@@ -35,7 +35,7 @@ This returns the simulated lenses for Euclid-VIS and Euclid NISP filters with a 
 
 To use the cGAN, follow:
 
-> cGANs_Euclid_ERO.ipynb
+> cGAN_Euclid_ERO.ipynb
 
 The data fed to the cGAN is loaded from each individual waveband file. The cGAN takes as input 3 Euclid filters (VIS, NISP-Y and NISP-J) for each extracted object from the Perseus cluster. The goal is for the cGAN to predict the NISP-H data for each object. 
 
